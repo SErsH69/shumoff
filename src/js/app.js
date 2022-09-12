@@ -1,46 +1,31 @@
 import * as globalFunctions from './modules/functions.js';
 globalFunctions.isWebp();
 
-import Vue from 'vue/dist/vue.js';
 import $ from 'jquery';
 
-import Header from '../blocks/modules/header/header.js';
-import Modals from '../blocks/modules/modals/modals.js';
+import FooterBlock from '../blocks/modules/footer/footer.js';
+import TextBlock from '../blocks/modules/text_page/text_page.js';
+import MapBlock from '../blocks/modules/map_block/map_block.js';
+import AboutBlock from '../blocks/modules/about_block/about_block.js';
+import RevBlock from '../blocks/modules/rev_block/rev_block.js';
+import WorkBlock from '../blocks/modules/work_slider/work_slider.js';
+import PrevBlock from '../blocks/modules/prev_block/prev_block.js';
 
-window.app = new Vue({
-    el: '#app',
-    data: () => ({
-        isMounted: false,
-        sizes: {
-            tablet: 1024,
-            mobile: 768,
-            window: window.innerWidth
-        },
-        header: new Header({
-            someVareible: 'someVareible'
-        }),
-        modals: new Modals({
-            modalsSelector: "data-modal",
-            modalsOpenerSelector: "data-modal-id",
-            openedClass: "isOpened"
-        })
-    }),
-    beforeCreate() {        
-        window.addEventListener('resize', () => {
-            this.sizes.window = window.innerWidth;
-        });
-    },
-    beforeMount() {
-        this.isMounted = true;
-        this.header.init();
-        this.modals.init();
-    },
-    computed: {
-        isMobile: function () {
-            return this.sizes.window < this.sizes.mobile;
-        },
-        isTablet: function () {
-            return this.sizes.window < this.sizes.tablet && this.sizes.window > this.sizes.mobile;
-        }
-    },
-});
+
+$(function () {
+    const footerBlock = new FooterBlock();
+    const textBlock = new TextBlock();
+    const mapBlock = new MapBlock();
+    const aboutBlock = new AboutBlock();
+    const revBlock = new RevBlock();
+    const workBlock = new WorkBlock();
+    const prevBlock = new PrevBlock();
+
+    mapBlock.init();
+    footerBlock.init();
+    textBlock.init();
+    aboutBlock.init();
+    revBlock.init();
+    workBlock.init();
+    prevBlock.init();
+})
