@@ -3,7 +3,7 @@ import $ from 'jquery';
 const HeaderBlock = class HeaderBlock {
     constructor() {}
     burgerBlock() {
-            $(window).resize(function(){
+        $(window).resize(function(){
               if (window.matchMedia("(min-width: 991px)").matches) {
                 $('.menu-top-wrap').insertAfter($('.fidex-panel'));
                 $('.site-content-wrap').append($('.site-content-left'));
@@ -21,7 +21,7 @@ const HeaderBlock = class HeaderBlock {
         $(window).trigger('resize');
           
           
-          function burg(){
+        function burg(){
             var burgerWr = $('.burger-wrap'),
               burgerBtn = $('.burger-btn'),
               burgerBody = $('.burger-body'),
@@ -36,18 +36,18 @@ const HeaderBlock = class HeaderBlock {
               $(burgerWr).removeClass('opened');
               $('html').removeClass('owh');
             })
-          }
+        }
           
-          burg();
+        burg();
           
           
-          $(document).on('click', function(e){
+        $(document).on('click', function(e){
             if( $(e.target).closest('.burger-btn').length || $(e.target).closest('.burger-body').length)
             return
             
             $('.burger-wrap').removeClass('opened');
             $('html').removeClass('owh');
-          });
+        });
     }
     init() {
         this.burgerBlock();

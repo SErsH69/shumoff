@@ -336,6 +336,9 @@
     }
 }
 .site-panel-wrap {
+    @media all and (min-width: 1024px) {
+        display: none;
+    }
     position: relative;
     z-index: 100;
     & .burger-wrap {
