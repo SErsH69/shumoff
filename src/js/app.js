@@ -3,6 +3,8 @@ globalFunctions.isWebp();
 
 import $ from 'jquery';
 
+import ProdBlock from '../blocks/modules/main_product/main_product.js';
+import HeaderBlock from '../blocks/modules/header/header.js';
 import FooterBlock from '../blocks/modules/footer/footer.js';
 import TextBlock from '../blocks/modules/text_page/text_page.js';
 import MapBlock from '../blocks/modules/map_block/map_block.js';
@@ -10,6 +12,7 @@ import AboutBlock from '../blocks/modules/about_block/about_block.js';
 import RevBlock from '../blocks/modules/rev_block/rev_block.js';
 import WorkBlock from '../blocks/modules/work_slider/work_slider.js';
 import PrevBlock from '../blocks/modules/prev_block/prev_block.js';
+import FirstBlock from '../blocks/modules/first_slider/first_slider.js';
 
 
 $(function () {
@@ -20,7 +23,11 @@ $(function () {
     const revBlock = new RevBlock();
     const workBlock = new WorkBlock();
     const prevBlock = new PrevBlock();
-
+    const headerBlock = new HeaderBlock();
+    const firstBlock = new FirstBlock();
+    const prodBlock = new ProdBlock();
+    
+    headerBlock.init();
     mapBlock.init();
     footerBlock.init();
     textBlock.init();
@@ -28,4 +35,6 @@ $(function () {
     revBlock.init();
     workBlock.init();
     prevBlock.init();
+    firstBlock.init();
+    prodBlock.init();
 })

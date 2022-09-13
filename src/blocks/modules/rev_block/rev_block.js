@@ -1,17 +1,8 @@
 import $ from 'jquery';
-import lightGallery from 'lightgallery';
 import 'slick-carousel';
 
 const RevBlock = class RevBlock {
     constructor() {}
-    lightBlock() {
-        $(document).ready(function() {
-            lightGallery(document.getElementById('lightgallery'), { 
-                speed: 500,
-                selector: 'a'
-            });
-        })
-    }
     sliderText() {
         $('.js_sl3').slick({
             infinite: true,
@@ -37,7 +28,6 @@ const RevBlock = class RevBlock {
           });
     }
     init() {
-        this.lightBlock();
         this.sliderText();
     }
 }
