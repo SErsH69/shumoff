@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import SlideMenu from '@grubersjoe/slide-menu';
 
 const HeaderBlock = class HeaderBlock {
     constructor() {}
@@ -49,8 +50,23 @@ const HeaderBlock = class HeaderBlock {
             $('html').removeClass('owh');
         });
     }
+    catalogClick() {
+        $('.header__cat-btn').on('click', function(){
+            $('.isOpen').toggleClass('isHide');
+            $('.isClose').toggleClass('isHide');
+            $('.header__cat').toggleClass('isOpened');
+        })
+    }
+    burgCatClick() {
+      $('.burger-body__catalog').on('click', function(){
+        $(this).toggleClass('isOpened');
+        $('.burger-body__cat-block').toggleClass('isOpened');
+      })
+    }
     init() {
         this.burgerBlock();
+        this.catalogClick();
+        this.burgCatClick();
     }
 }
 

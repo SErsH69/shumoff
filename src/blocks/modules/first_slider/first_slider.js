@@ -8,12 +8,13 @@ const FirstBlock = class FirstBlock {
             infinite: true,
             slidesToShow: 1,
             fade: true,
+            cssEase: 'linear',
             slidesToScroll: 1,
             dots: true,
             prevArrow: $('.first_slider__arrow--left'),
             nextArrow: $('.first_slider__arrow--right')
           });
-        var time = 3;
+        var time = 5;
         var $bar,
           isPause,
           tick,
@@ -47,7 +48,18 @@ const FirstBlock = class FirstBlock {
             isPause = false;
             tick = setInterval(interval, 10);
         }
-
+        $('.first_slider__arrow--right').on('click', function() {
+            resetProgressbar();
+            percentTime = 0;
+            isPause = false;
+            tick = setInterval(interval, 10);
+        })
+        $('.first_slider__arrow--left').on('click', function() {
+            resetProgressbar();
+            percentTime = 0;
+            isPause = false;
+            tick = setInterval(interval, 10);
+        })
         function interval() {
             if (isPause === false) {
                 percentTime += 1 / (time + 0.1);
@@ -69,8 +81,24 @@ const FirstBlock = class FirstBlock {
         }
         startProgressbar();
     }
+    blockRunner() {
+        var marquee = $("#marquee"); 
+        marquee.css({"overflow": "hidden", "width": "100%"});
+        // оболочка для текста ввиде span (IE не любит дивы с inline-block)
+        marquee.wrapInner("<span>");
+        marquee.find("span").css({ "width": "50%", "display": "inline-block", "text-align":"center" }); 
+        marquee.append(marquee.find("span").clone()); // тут у нас два span с текстом
+        marquee.wrapInner("<div>");
+        marquee.find("div").css("width", "200%");
+        var reset = function() {
+            $(this).css("margin-left", "0%");
+            $(this).animate({ "margin-left": "-100%" }, 12000, 'linear', reset);
+        };
+        reset.call(marquee.find("div"));
+    }
     init() {
         this.sliderFirst();
+        this.blockRunner();
     }
 }
 
